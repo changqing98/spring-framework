@@ -178,6 +178,7 @@ public class DefaultSingletonBeanRegistry extends SimpleAliasRegistry implements
 	 */
 	@Nullable
 	protected Object getSingleton(String beanName, boolean allowEarlyReference) {
+		// 获取单例bean
 		Object singletonObject = this.singletonObjects.get(beanName);
 		if (singletonObject == null && isSingletonCurrentlyInCreation(beanName)) {
 			synchronized (this.singletonObjects) {
@@ -621,8 +622,8 @@ public class DefaultSingletonBeanRegistry extends SimpleAliasRegistry implements
 	 * to avoid the potential for deadlocks in lazy-init situations.
 	 */
 	@Override
-	public final Object getSingletonMutex() {
-		return this.singletonObjects;
-	}
+		public final Object getSingletonMutex() {
+			return this.singletonObjects;
+		}
 
 }
